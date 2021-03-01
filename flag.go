@@ -107,6 +107,8 @@ import (
 	"os"
 	"sort"
 	"strings"
+
+	"github.com/urionz/color"
 )
 
 // ErrHelp is the error returned if the flag -help is invoked but no such flag is defined.
@@ -694,7 +696,7 @@ func (f *FlagSet) FlagUsagesWrapped(cols int) string {
 
 		line := ""
 		if flag.Shorthand != "" && flag.ShorthandDeprecated == "" {
-			line = fmt.Sprintf("  -%s, --%s", flag.Shorthand, flag.Name)
+			line = color.String(fmt.Sprintf("  <info>-%s, --%s</>", flag.Shorthand, flag.Name))
 		} else {
 			line = fmt.Sprintf("      --%s", flag.Name)
 		}
